@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CartService.DataProviders")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+347a82be2e7863d32e2a61c9651fac41790ab57e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CartService.DataProviders")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CartService.DataProviders")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

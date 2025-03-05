@@ -1,0 +1,31 @@
+# .NET Core build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# VS Code directories
+.vscode/
+
+# JetBrains Rider directories
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# .NET Core & ASP.NET Core specific
+project.lock.json
+project.fragment.lock.json
+npm-debug.log
+yarn-error.log
+
+# VS for Mac
+
