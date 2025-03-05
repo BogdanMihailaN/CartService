@@ -1,0 +1,11 @@
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/bin/Debug/net8.0/CartService.Services.deps.json
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/bin/Debug/net8.0/CartService.Services.dll
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/bin/Debug/net8.0/CartService.Services.pdb
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/CartService.Services.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/CartService.Services.AssemblyInfoInputs.cache
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/CartService.Services.AssemblyInfo.cs
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/CartService.Services.csproj.CoreCompileInputs.cache
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/CartService.Services.dll
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/refint/CartService.Services.dll
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/CartService.Services.pdb
+/Users/bogdanmihaila/Desktop/MibostarArt Project/CartService/src/Services/obj/Debug/net8.0/ref/CartService.Services.dll
