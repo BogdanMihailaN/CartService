@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CartService.Infrastructure.Migrations
 {
     [DbContext(typeof(CartServiceDbContext))]
-    [Migration("20250308141946_InitialMigration")]
+    [Migration("20250308192112_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -43,10 +43,14 @@ namespace CartService.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalDiscount")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0.0m);
 
                     b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0.0m);
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -83,9 +87,6 @@ namespace CartService.Infrastructure.Migrations
                     b.Property<int>("CartId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CartId1")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");
 
@@ -105,7 +106,9 @@ namespace CartService.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalDiscount")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("decimal(18,2)")
+                        .HasComputedColumnSql("[Discount] * [Quantity]");
 
                     b.Property<decimal>("TotalPrice")
                         .ValueGeneratedOnAddOrUpdate()
@@ -116,7 +119,7 @@ namespace CartService.Infrastructure.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.HasIndex("CartId1");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
 
@@ -151,15 +154,11 @@ namespace CartService.Infrastructure.Migrations
 
             modelBuilder.Entity("CartService.Domain.Entities.CartItem", b =>
                 {
-                    b.HasOne("CartService.Domain.Entities.Cart", null)
+                    b.HasOne("CartService.Domain.Entities.Cart", "Cart")
                         .WithMany("Items")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("CartService.Domain.Entities.Cart", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartId1");
 
                     b.Navigation("Cart");
                 });

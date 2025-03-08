@@ -14,17 +14,36 @@ namespace CartService.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
+            // Configurare relație între Cart și CartItem (uno la mulți)
             modelBuilder.Entity<Cart>()
                 .HasMany(c => c.Items)
-                .WithOne()
-                .HasForeignKey(ci => ci.CartId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WithOne(ci => ci.Cart)  // Legătura inversă de la CartItem la Cart
+                .HasForeignKey(ci => ci.CartId)  // Cheia străină în CartItem
+                .OnDelete(DeleteBehavior.Cascade);  // Ștergere în cascadă a articolelor când se șterge un coș
 
+            // Configurare pentru entitatea CartItem
             modelBuilder.Entity<CartItem>()
                 .Property(ci => ci.TotalPrice)
-                .HasComputedColumnSql("[Price] * [Quantity]");
+                .HasComputedColumnSql("[Price] * [Quantity]");  // TotalPrice calculat automat pe baza prețului și cantității
 
-            // Seed data in Cart and CartItem tables
+            modelBuilder.Entity<CartItem>()
+                .Property(ci => ci.TotalDiscount)
+                .HasComputedColumnSql("[Discount] * [Quantity]");  // TotalDiscount calculat automat pe baza discount-ului și cantității
+
+            // Configurare pentru entitatea Cart
+            modelBuilder.Entity<Cart>()
+                .Property(c => c.TotalPrice)
+                .HasDefaultValue(0.0M);  // Poți seta o valoare implicită pentru TotalPrice dacă nu este calculat altfel
+
+            modelBuilder.Entity<Cart>()
+                .Property(c => c.TotalDiscount)
+                .HasDefaultValue(0.0M);  // Poți seta o valoare implicită pentru TotalDiscount dacă nu este calculat altfel
+
+            // Configurare pentru entitatea CartItem
+            modelBuilder.Entity<CartItem>()
+                .HasIndex(ci => ci.ProductId);  // Creare index pe ProductId pentru a îmbunătăți performanța interogărilor
+
+            // Seed data în Cart
             modelBuilder.Entity<Cart>().HasData(
                 new Cart
                 {
@@ -38,6 +57,7 @@ namespace CartService.Infrastructure
                     UpdatedAt = new DateTime(2025, 3, 8)
                 });
 
+            // Seed data în CartItem
             modelBuilder.Entity<CartItem>().HasData(
                 new CartItem
                 {
@@ -66,5 +86,6 @@ namespace CartService.Infrastructure
                     TotalDiscount = 10.0M
                 });
         }
+
     }
 }
