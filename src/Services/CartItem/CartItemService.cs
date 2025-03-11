@@ -36,6 +36,7 @@ namespace CartService.Services.CartItem
             if (cartItem != null)
             {
                 cartItem = cartItemDto;
+                cartItem.Id = id;
                 await _cartItemRepository.UpdateCartItemAsync(cartItem);
             }
         }
